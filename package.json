@@ -1,0 +1,12 @@
+{
+  "name": "guestbook",
+  "version": "0.0.1",
+  "description": "Simple Guestbook with MEAN Stack",
+  "main": "server.js",
+  "author": "ferodss",
+  "dependencies": {
+      "express": "~4.1.x",
+      "mongoose": "~3.8.x",
+      "body-parser": "~1.0.x"
+  }
+}

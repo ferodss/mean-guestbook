@@ -1,0 +1,22 @@
+{
+  "name": "guestbook",
+  "version": "0.0.1",
+  "authors": [
+    "Felipe Rodrigues (@ferodss)"
+  ],
+  "description": "Simple Guestbook with MEAN Stack",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+      "angular": "latest",
+      "angular-route": "latest",
+      "bootstrap": "latest"
+  }
+}
