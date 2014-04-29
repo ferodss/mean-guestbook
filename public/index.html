@@ -3,9 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Guestbook with MEAN Stack</title>
+
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-    
+<body ng-app="guestbook">
+
+    <div class="navbar navbar-default">
+        <div class="container">
+            <a class="navbar-brand" href="#">Guestbook with MEAN Stack</a>
+            by <a href="https://github.com/ferodss" target="_blank">@ferodss</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div ng-view></div>
+    </div>
+
+
+    <!-- AngularJS -->
+    <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
+
+    <!-- App -->
+    <script type="text/javascript" src="/js/app.js"></script>
+    <script type="text/javascript" src="/js/controllers/MessageCtrl.js"></script>
+    <script type="text/javascript" src="/js/services/MessageService.js"></script>
 
 </body>
 </html>

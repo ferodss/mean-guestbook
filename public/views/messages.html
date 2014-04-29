@@ -1,0 +1,25 @@
+
+<section class="new-message">
+    <h3>New Message</h3>
+
+    <form ng-submit="newMessage();">
+        <input type="text" placeholder="Author" ng-model="message.author">
+        <textarea placeholder="Message" ng-model="message.body"></textarea>
+
+        <input type="submit" value="Send">
+    </form>
+
+    <pre>{{ message | json }}</pre>
+
+</section>
+
+<section class="messages">
+    <h3>Messages</h3>
+
+    <div class="message" ng-repeat="message in messages">
+        {{ message.author }} - {{ message.date | date: 'medium' }}
+        <p>{{ message.body }}</p>
+    </div>
+
+</section>
+<!-- /.messages -->
