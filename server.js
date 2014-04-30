@@ -9,6 +9,9 @@ var mongoose   = require('mongoose');
 var Message    = require('./app/models/message');
 var app        = express();
 
+// Load message model
+var Message = require('./app/models/message');
+
 // connect to the database
 mongoose.connect('mongodb://localhost/guestbook');
 
@@ -16,11 +19,52 @@ mongoose.connect('mongodb://localhost/guestbook');
 // this will let us get the data from a POST
 app.use(bodyParser());
 
-// serve statci files in /public directory
+// serve static files in /public directory
 app.use(express.static(__dirname + '/public'));
 
 // set our port
 var port = process.env.PORT || 3000;
+
+// API ROUTES
+// ============================================================================
+
+// get an instance of the express Router
+var router = express.Router();
+
+// setup messages routes
+router.route('/messages')
+    // GET /api/messages to get a list of messages
+    .get(function(req, res) {
+        Message.find(function(err, messages) {
+            if (err) {
+                res.send(err);
+            }
+
+            res.json(messages);
+        });
+    })
+    // POST /api/messages to create a new message
+    .post(function(req, res) {
+        var message    = new Message();
+        message.author = req.body.author;
+        message.body   = req.body.body;
+        message.date   = Date.now();
+
+        // Save the message an check for errors
+        message.save(function(err) {
+            if (err) {
+                res.send(err);
+            }
+
+            res.json({
+                message: 'Message created!',
+                data: message
+            });
+        });
+    });
+
+// register all API routes prefixed with /api
+app.use('/api', router);
 
 // ANGULAR ROUTE
 // =============================================================================
