@@ -20,7 +20,7 @@
                 $scope.messageForm.$setPristine();
 
                 // Push new message into scope
-                $scope.messages.push(response.data.data);
+                $scope.messages.unshift(response.data.data);
             });
         };
     };
