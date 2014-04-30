@@ -19,18 +19,25 @@
     <section class="col-md-6 new-message">
         <h3>New Message</h3>
 
-        <form ng-submit="newMessage();">
-            <div class="form-group">
+        <form name="messageForm" ng-submit="newMessage()" novalidate>
+            <div class="form-group" ng-class="{ 'has-error': messageForm.author.$invalid && !messageForm.author.$pristine }">
                 <label for="author">Name</label>
-                <input type="text" id="author" class="form-control" placeholder="Name" ng-model="message.author">
+                <input type="text" name="author" id="author" class="form-control" placeholder="Name" ng-model="message.author" required>
+                <p ng-show="messageForm.author.$invalid && !messageForm.author.$pristine" class="help-block">Your name is required.</p>
             </div>
 
             <div class="form-group">
                 <label for="message">Message</label>
-                <textarea id="message" class="form-control" placeholder="Message" ng-model="message.body"></textarea>
+                <textarea name="message" id="message" class="form-control" placeholder="Message" 
+                    ng-model="message.body"
+                    ng-minlength="10"
+                    ng-maxlength="100"
+                    required></textarea>
+                <p ng-show="messageForm.message.$error.minlength" class="help-block">Your message is too short.</p>
+                <p ng-show="messageForm.message.$error.maxlength" class="help-block">Your message is too long.</p>
             </div>
 
-            <button type="submit" class="btn btn-primary">Send</button>
+            <button type="submit" class="btn btn-primary" ng-disabled="messageForm.$invalid">Send</button>
         </form>
     </section>
     <!-- /.new-message -->

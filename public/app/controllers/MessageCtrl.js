@@ -10,9 +10,14 @@
 
         // Create a new message
         $scope.newMessage = function() {
+            if (! $scope.messageForm.$valid) {
+                return false;
+            }
+
             MessageService.create($scope.message).then(function(response) {
-                // Clean the form
+                // Reset the form
                 $scope.message = {};
+                $scope.messageForm.$setPristine();
 
                 // Push new message into scope
                 $scope.messages.push(response.data.data);
