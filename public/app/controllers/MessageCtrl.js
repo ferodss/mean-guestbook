@@ -4,7 +4,7 @@
         $scope.message = {};
 
         // Load all messages
-        MessageService.findAll().then(function(messages) {
+        MessageService.all().then(function(messages) {
             $scope.messages = messages.data;
         });
 

@@ -2,10 +2,12 @@
 
     var MessageService = function($http) {
         return {
-            findAll: function() {
+            // get all messages
+            all: function() {
                 return $http.get('/api/messages');
             },
             
+            // create a new message
             create: function(message) {
                 return $http.post('/api/messages', message);
             }

@@ -1,25 +1,39 @@
 
-<section class="new-message">
-    <h3>New Message</h3>
+<div class="row">
 
-    <form ng-submit="newMessage();">
-        <input type="text" placeholder="Author" ng-model="message.author">
-        <textarea placeholder="Message" ng-model="message.body"></textarea>
+    <section class="col-md-6 messages">
+        <h3>Messages</h3>
 
-        <input type="submit" value="Send">
-    </form>
+        <div class="panel panel-default message" ng-repeat="message in messages">
+            <div class="panel-body">
+                <strong>{{ message.author }}</strong> ({{ message.date | date: 'MMMM dd, yyyy HH:mm' }})
+                <p>{{ message.body }}</p>
+            </div>
+            <!-- /.pane-body -->
+        </div>
+        <!-- /.panel -->
 
-    <pre>{{ message | json }}</pre>
+    </section>
+    <!-- /.messages -->
 
-</section>
+    <section class="col-md-6 new-message">
+        <h3>New Message</h3>
 
-<section class="messages">
-    <h3>Messages</h3>
+        <form ng-submit="newMessage();">
+            <div class="form-group">
+                <label for="author">Name</label>
+                <input type="text" id="author" class="form-control" placeholder="Name" ng-model="message.author">
+            </div>
 
-    <div class="message" ng-repeat="message in messages">
-        {{ message.author }} - {{ message.date | date: 'medium' }}
-        <p>{{ message.body }}</p>
-    </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" class="form-control" placeholder="Message" ng-model="message.body"></textarea>
+            </div>
 
-</section>
-<!-- /.messages -->
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </section>
+    <!-- /.new-message -->
+
+</div>
+<!-- /.row -->

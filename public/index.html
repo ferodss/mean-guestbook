@@ -5,21 +5,27 @@
     <title>Guestbook with MEAN Stack</title>
 
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <style type="text/css">
+        .by {
+            font-size:0.9em;
+            line-height:50px;
+        }
+    </style>
 </head>
 <body ng-app="guestbook">
 
     <div class="navbar navbar-default">
         <div class="container">
-            <a class="navbar-brand" href="#">Guestbook with MEAN Stack</a>
-            by <a href="https://github.com/ferodss" target="_blank">@ferodss</a>
+            <a class="navbar-brand" href="/">Guestbook with MEAN Stack</a>
+            <span class="by">
+                by <a href="https://twitter.com/ferodss" target="_blank">@ferodss</a>
+            </span>
         </div>
     </div>
 
     <div class="container">
         <div ng-view></div>
     </div>
-
 
     <!-- AngularJS -->
     <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
