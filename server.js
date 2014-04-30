@@ -35,7 +35,7 @@ var router = express.Router();
 router.route('/messages')
     // GET /api/messages to get a list of messages
     .get(function(req, res) {
-        Message.find(function(err, messages) {
+        Message.find({}).sort({date: -1}).exec(function(err, messages) {
             if (err) {
                 res.send(err);
             }
